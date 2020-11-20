@@ -1,0 +1,11 @@
+.profile__add {
+  margin: 36px 0 0 0;
+}
+
+@media screen and (min-width: 880px) {
+  .profile__add {
+    margin: 0;
+    max-width: 150px;
+    justify-self: flex-end;
+  }
+}

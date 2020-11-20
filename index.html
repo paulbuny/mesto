@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="pages/index.css">
+  <title>Проект Место</title>
+</head>
+<body class="page">
+  <header class="header">
+    <img class="header__logo" src="images/header_logo_theme_dark.svg" alt="МЕСТО">
+  </header>
+  <main class="content">
+
+    <section class="profile">
+      <img class="profile__avatar" src="images/Avatar.jpg" alt="Фотография пользователя">
+      <div class="profile__info">
+        <h1 class="profile__info-title">Жак-Ив Кусто</h1>
+        <p class="profile__info-text">Исследователь океана</p>
+        <button class="button button__edit profile__edit"></button>
+      </div>
+      <button class="button button__add profile__add"></button>
+    </section>
+
+    <section>
+      <ul class="cards">
+        <li class="card">
+          <img class="card__image" src="images/kirill-pershin-1088404-unsplash.jpg"
+               alt="Старая постройка с заросшим фасадом на фоне подножья горы">
+          <div class="card__text">
+            <h2 class="card__title">Карачаевск</h2>
+            <button class="button button__like card__like"></button>
+          </div>
+        </li>
+        <li class="card">
+          <img class="card__image" src="images/kirill-pershin-1404681-unsplash.jpg"
+               alt="Равнинная местность с туманным силуэтом гор на горизонте">
+          <div class="card__text">
+            <h2 class="card__title">Гора Эльбрус</h2>
+            <button class="button button__like card__like"></button>
+          </div>
+        </li>
+        <li class="card">
+          <img class="card__image" src="images/kirill-pershin-1556355-unsplash.jpg"
+               alt="Лесистые склоны холмов с заснеженным пиком горы на заднем плане">
+          <div class="card__text">
+            <h2 class="card__title">Домбай</h2>
+            <button class="button button__like card__like"></button>
+          </div>
+        </li>
+        <li class="card">
+          <img class="card__image" src="images/kirill-pershin-1088404-unsplash.jpg"
+               alt="Старая постройка с заросшим фасадом на фоне подножья горы">
+          <div class="card__text">
+            <h2 class="card__title">Гора Эльбрус</h2>
+            <button class="button button__like card__like"></button>
+          </div>
+        </li>
+        <li class="card">
+          <img class="card__image" src="images/kirill-pershin-1404681-unsplash.jpg"
+               alt="Равнинная местность с туманным силуэтом гор на горизонте">
+          <div class="card__text">
+            <h2 class="card__title">Домбай</h2>
+            <button class="button button__like card__like"></button>
+          </div>
+        </li>
+        <li class="card">
+          <img class="card__image" src="images/kirill-pershin-1556355-unsplash.jpg"
+               alt="Лесистые склоны холмов с заснеженным пиком горы на заднем плане">
+          <div class="card__text">
+            <h2 class="card__title">Карачаево-Черкесия</h2>
+            <button class="button button__like card__like"></button>
+          </div>
+        </li>
+      </ul>
+    </section>
+  </main>
+  <footer class="footer">
+    <p class="footer__copyright">&#169; 2020 Mesto Russia</p>
+  </footer>
+  
+  <div class="pop-up">
+    <div class="pop-up__window">
+      <h2 class="pop-up__title">Редактировать профиль</h2>
+      <form class="pop-up__form">
+        <input class="pop-up__input" id="name" type="text" name="profile-name">
+        <input class="pop-up__input" id="text" type="text" name="profile-text">
+        <input class="button pop-up__submit" type="submit" value="Сохранить">
+      </form>
+      <button class="button button__close pop-up__close"></button>
+    </div>
+  </div>
+  
+<script src="src/script.js"></script>
+</body>
+</html>
