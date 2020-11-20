@@ -1,0 +1,16 @@
+.header {
+  min-height: 84px;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  justify-items: center;
+  border-bottom: 1px solid #545454;
+  box-sizing: border-box;
+}
+
+@media screen and (min-width: 880px) {
+  .header {
+    min-height: 119px;
+  }
+}

@@ -1,0 +1,13 @@
+.profile__edit {
+  position: absolute;
+  top: 8px;
+  right: -26px;
+  margin-left: 10px;
+  display: block;
+}
+
+@media screen and (min-width: 880px) {
+  .profile__edit {
+    top: 15px;
+  }
+}
