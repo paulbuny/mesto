@@ -24,6 +24,8 @@ function formSubmitHandler (evt) {
 
     profileName.textContent = popUpInput[0].value;
     profileJob.textContent = popUpInput[1].value;
+
+    popUp.classList.toggle('pop-up_display_active');
 }
 
 formElement.addEventListener('submit', formSubmitHandler);

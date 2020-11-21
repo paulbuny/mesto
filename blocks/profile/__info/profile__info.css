@@ -1,5 +1,5 @@
 .profile__info {
-  position: relative;
+  max-width: calc(100% - (18px + 10px));
 }
 
 @media screen and (min-width: 880px) {

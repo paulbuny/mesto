@@ -1,4 +1,8 @@
 .card__text {
-  position: relative;
+  padding: 25px 40px 31px 21px;
+  justify-content: space-between;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
   width: 100%;
 }

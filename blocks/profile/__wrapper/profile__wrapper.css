@@ -1,0 +1,11 @@
+.profile__wrapper {
+  margin-top: 26px;
+  display: flex;
+  flex-direction: row;
+}
+
+@media screen and (min-width: 880px){
+  .profile__wrapper {
+    margin-top: 0;
+  }
+}
