@@ -1,5 +1,10 @@
 .profile__add {
   margin: 36px 0 0 0;
+  background-image: url("../../../images/add_button.svg");
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center center;
+  color: transparent;
 }
 
 @media screen and (min-width: 880px) {
