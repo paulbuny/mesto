@@ -11,7 +11,7 @@
   .profile {
     width: 100%;
     display: grid;
-    grid-template-columns: min-content 4fr 1fr;
+    grid-template-columns: min-content 580px 1fr;
     padding: 40px 0 50px 0;
   }
 }

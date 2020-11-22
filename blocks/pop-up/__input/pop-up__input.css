@@ -1,14 +1,15 @@
 .pop-up__input {
   margin-top: 30px;
   width: 100%;
-  height: 27px;
+  /*min-height: 27px;*/
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   box-sizing: border-box;
-  font: "Inter", helvetica, sans-serif;
+  font-family: "Inter", helvetica, sans-serif;
   font-weight: 400;
   font-size: 14px;
   line-height: 1.21;
+  padding: 0 0 13px 0;
 }
 
 .pop-up__input:first-of-type {

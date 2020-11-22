@@ -13,9 +13,7 @@
   box-sizing: border-box;
   transition: opacity 0.25s ease-in-out;
 }
-.button:hover {
-  opacity: 0.8;
-}
+
 .button:focus {
   outline: none;
 }
