@@ -9,18 +9,14 @@ let profileEdit = document.querySelector('.profile__edit'),
     popUpClose = document.querySelector('.pop-up__close');
 
 function openPopUp() {
-        popUp.classList.add('pop-up_display_active');
-}
-
-function closePopUp() {
-        popUp.classList.remove('pop-up_display_active');
-}
-
-function editProfileData() {
-    openPopUp();
+    popUp.classList.add('pop-up_display_active');
 
     popUpInputName.value = profileName.textContent;
     popUpInputJob.value = profileJob.textContent;
+}
+
+function closePopUp() {
+    popUp.classList.remove('pop-up_display_active');
 }
 
 function saveProfileData (evt) {
@@ -32,6 +28,6 @@ function saveProfileData (evt) {
     closePopUp();
 }
 
-profileEdit.addEventListener('click', editProfileData);
+profileEdit.addEventListener('click', openPopUp);
 popUpClose.addEventListener('click', closePopUp);
 formElement.addEventListener('submit', saveProfileData);
