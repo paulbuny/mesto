@@ -33,5 +33,7 @@
 @import url(../blocks/pop-up/__window/pop-up__window.css);
 @import url(../blocks/pop-up/__title/pop-up__title.css);
 @import url(../blocks/pop-up/__input/pop-up__input.css);
+@import url(../blocks/pop-up/__input/_profile/pop-up__input_profile_name.css);
+@import url(../blocks/pop-up/__input/_profile/pop-up__input_profile_job.css);
 @import url(../blocks/pop-up/__submit/pop-up__submit.css);
 @import url(../blocks/pop-up/__close/pop-up__close.css);
