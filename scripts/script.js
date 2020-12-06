@@ -114,22 +114,11 @@ function addNewCard (evt) {
         link: cardDataLink.value
     };
 
-    if (cardData.name === '' || cardData.link === '') {
+    cardRender(cardData);
+    closePopUp(popUpPlace);
 
-        cardDataName.placeholder = 'Введите название';
-        cardDataLink.placeholder = 'Укажите ссылку на картинку';
-
-    } else {
-
-        cardDataName.placeholder = 'Название';
-        cardDataLink.placeholder = 'Ссылка на картинку';
-
-        cardDataName.value = '';
-        cardDataLink.value = '';
-
-        cardRender(cardData);
-        closePopUp(popUpPlace);
-    }
+    cardDataName.value = '';
+    cardDataLink.value = '';
 }
 
 //Функция открытия окна pop-up
