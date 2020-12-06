@@ -12,6 +12,7 @@
   background-repeat: no-repeat;
   background-position: center center;
   z-index: 1;
+  cursor: pointer;
 }
 
 .card__delete:hover {

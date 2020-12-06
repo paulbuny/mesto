@@ -5,4 +5,5 @@
   object-position: center;
   transition: width .25s ease-in-out;
   overflow: hidden;
+  cursor: pointer;
 }

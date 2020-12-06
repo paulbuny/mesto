@@ -12,7 +12,7 @@ let profileEdit = document.querySelector('.profile__edit'),
 
     //Pop-up элементы добавления новой карточки "места"
     popUpPlace = document.querySelector('.pop-up_new-card'),
-    popUpPlaceForm = document.querySelector('.pop-up_card-form'),
+    popUpPlaceForm = document.querySelector('.pop-up__card-form'),
     popUpPlaceClose = document.querySelector('.pop-up__close-card'),
 
     //Элементы добавления карточек
