@@ -31,12 +31,12 @@
 @import url(../blocks/footer/__copyright/footer__copyright.css);
 
 @import url(../blocks/pop-up/pop-up.css);
+@import url(../blocks/pop-up/__image-viewer/pop-up__image-viewer.css);
 @import url(../blocks/pop-up/_edit-profile/pop-up_edit-profile.css);
 @import url(../blocks/pop-up/_new-card/pop-up_new-card.css);
-@import url(../blocks/pop-up/_image/pop-up_image.css);
+@import url(../blocks/pop-up/_card-image/pop-up_card-image.css);
 @import url(../blocks/pop-up/_display/pop-up_display_active.css);
 @import url(../blocks/pop-up/__window/pop-up__window.css);
-@import url(../blocks/pop-up/__window/_image/pop-up__window_image.css);
 @import url(../blocks/pop-up/__image/pop-up__image.css);
 @import url(../blocks/pop-up/__title/pop-up__title.css);
 @import url(../blocks/pop-up/__caption/pop-up__caption.css);

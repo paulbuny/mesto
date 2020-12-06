@@ -48,35 +48,35 @@
         <input class="pop-up__input pop-up__input_profile_job" type="text" name="profile-text">
         <input class="button pop-up__submit" type="submit" value="Сохранить">
       </form>
-      <button class="button pop-up__close pop-up_close_profile" type="button"></button>
+      <button class="button pop-up__close pop-up__close-profile" type="button"></button>
     </div>
   </div>
 
   <div class="pop-up pop-up_new-card">
     <div class="pop-up__window">
       <h2 class="pop-up__title">Новое место</h2>
-      <form class="pop-up__form pop-up_place_form" name="edit-profile">
+      <form class="pop-up_card-form" name="edit-profile">
         <input class="pop-up__input pop-up__input_card_place" type="text" name="profile-name" placeholder="Название">
-        <input class="pop-up__input pop-up__input_card_image" type="text" name="profile-text"
+        <input class="pop-up__input pop-up__input_card_image" type="url" name="profile-text"
                placeholder="Ссылка на картинку">
         <input class="button pop-up__submit" type="submit" value="Создать">
       </form>
-      <button class="button pop-up__close pop-up_close_card" type="button"></button>
+      <button class="button pop-up__close pop-up__close-card" type="button"></button>
     </div>
   </div>
 
-  <div class="pop-up pop-up_image">
-    <div class="pop-up__window_image">
-      <img class="pop-up__image" src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg" alt="">
+  <div class="pop-up pop-up_card-image">
+    <div class="pop-up__image-viewer">
+      <img class="pop-up__image" src="#" alt="Фотография">
       <p class="pop-up__caption">Text</p>
-      <button class="button pop-up__close pop-up_close_image" type="button"></button>
+      <button class="button pop-up__close pop-up__close-image" type="button"></button>
     </div>
   </div>
   
   <template class="card-template">
     <li class="card">
       <button class="button card__delete" type="button"></button>
-      <img class="card__image" src="#">
+      <img class="card__image" src="#" alt="Фотокарточка">
       <div class="card__text">
         <h2 class="card__title"></h2>
         <button class="button card__like" type="button"></button>

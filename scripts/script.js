@@ -8,20 +8,20 @@ let profileEdit = document.querySelector('.profile__edit'),
     popUp = document.querySelector('.pop-up_edit-profile'),
     popUpInputName = formElement.querySelector('.pop-up__input_profile_name'),
     popUpInputJob = formElement.querySelector('.pop-up__input_profile_job'),
-    popUpClose = document.querySelector('.pop-up__close'),
+    popUpClose = document.querySelector('.pop-up__close-profile'),
 
     //Pop-up элементы добавления новой карточки "места"
     popUpPlace = document.querySelector('.pop-up_new-card'),
-    popUpPlaceForm = document.querySelector('.pop-up_place_form'),
-    popUpPlaceClose = document.querySelector('.pop-up_close_card'),
+    popUpPlaceForm = document.querySelector('.pop-up_card-form'),
+    popUpPlaceClose = document.querySelector('.pop-up__close-card'),
 
     //Элементы добавления карточек
     addCardButton = document.querySelector('.profile__add'),
     cardsContainer = document.querySelector('.cards'),
 
     //Pop-up элементы отображения изображения карточки
-    popUpImage = document.querySelector('.pop-up_image'),
-    popUpCloseImage = document.querySelector('.pop-up_close_image'),
+    popUpImage = document.querySelector('.pop-up_card-image'),
+    popUpCloseImage = document.querySelector('.pop-up__close-image'),
     popUpPicture = document.querySelector('.pop-up__image'),
     popUpImageCaption = document.querySelector('.pop-up__caption');
 
