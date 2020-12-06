@@ -1,3 +1,4 @@
 .pop-up_display_active {
-  display: block;
+  visibility: visible;
+  opacity: 1;
 }

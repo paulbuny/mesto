@@ -31,54 +31,7 @@
 
     <section>
       <ul class="cards">
-        <li class="card">
-          <img class="card__image" src="images/kirill-pershin-1088404-unsplash.jpg"
-               alt="Старая постройка с заросшим фасадом на фоне подножья горы">
-          <div class="card__text">
-            <h2 class="card__title">Карачаевск</h2>
-            <button class="button card__like" type="button"></button>
-          </div>
-        </li>
-        <li class="card">
-          <img class="card__image" src="images/kirill-pershin-1404681-unsplash.jpg"
-               alt="Равнинная местность с туманным силуэтом гор на горизонте">
-          <div class="card__text">
-            <h2 class="card__title">Гора Эльбрус</h2>
-            <button class="button card__like" type="button"></button>
-          </div>
-        </li>
-        <li class="card">
-          <img class="card__image" src="images/kirill-pershin-1556355-unsplash.jpg"
-               alt="Лесистые склоны холмов с заснеженным пиком горы на заднем плане">
-          <div class="card__text">
-            <h2 class="card__title">Домбай</h2>
-            <button class="button card__like" type="button"></button>
-          </div>
-        </li>
-        <li class="card">
-          <img class="card__image" src="images/kirill-pershin-1088404-unsplash.jpg"
-               alt="Старая постройка с заросшим фасадом на фоне подножья горы">
-          <div class="card__text">
-            <h2 class="card__title">Гора Эльбрус</h2>
-            <button class="button card__like" type="button"></button>
-          </div>
-        </li>
-        <li class="card">
-          <img class="card__image" src="images/kirill-pershin-1404681-unsplash.jpg"
-               alt="Равнинная местность с туманным силуэтом гор на горизонте">
-          <div class="card__text">
-            <h2 class="card__title">Домбай</h2>
-            <button class="button card__like" type="button"></button>
-          </div>
-        </li>
-        <li class="card">
-          <img class="card__image" src="images/kirill-pershin-1556355-unsplash.jpg"
-               alt="Лесистые склоны холмов с заснеженным пиком горы на заднем плане">
-          <div class="card__text">
-            <h2 class="card__title">Карачаево-Черкесия</h2>
-            <button class="button card__like" type="button"></button>
-          </div>
-        </li>
+      
       </ul>
     </section>
   </main>
@@ -87,7 +40,7 @@
     <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
   </footer>
   
-  <div class="pop-up">
+  <div class="pop-up pop-up_edit-profile">
     <div class="pop-up__window">
       <h2 class="pop-up__title">Редактировать профиль</h2>
       <form class="pop-up__form" name="edit-profile">
@@ -95,9 +48,41 @@
         <input class="pop-up__input pop-up__input_profile_job" type="text" name="profile-text">
         <input class="button pop-up__submit" type="submit" value="Сохранить">
       </form>
-      <button class="button pop-up__close" type="button"></button>
+      <button class="button pop-up__close pop-up_close_profile" type="button"></button>
     </div>
   </div>
+
+  <div class="pop-up pop-up_new-card">
+    <div class="pop-up__window">
+      <h2 class="pop-up__title">Новое место</h2>
+      <form class="pop-up__form pop-up_place_form" name="edit-profile">
+        <input class="pop-up__input pop-up__input_card_place" type="text" name="profile-name" placeholder="Название">
+        <input class="pop-up__input pop-up__input_card_image" type="text" name="profile-text"
+               placeholder="Ссылка на картинку">
+        <input class="button pop-up__submit" type="submit" value="Создать">
+      </form>
+      <button class="button pop-up__close pop-up_close_card" type="button"></button>
+    </div>
+  </div>
+
+  <div class="pop-up pop-up_image">
+    <div class="pop-up__window_image">
+      <img class="pop-up__image" src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg" alt="">
+      <p class="pop-up__caption">Text</p>
+      <button class="button pop-up__close pop-up_close_image" type="button"></button>
+    </div>
+  </div>
+  
+  <template class="card-template">
+    <li class="card">
+      <button class="button card__delete" type="button"></button>
+      <img class="card__image" src="#">
+      <div class="card__text">
+        <h2 class="card__title"></h2>
+        <button class="button card__like" type="button"></button>
+      </div>
+    </li>
+  </template>
   
 <script src="scripts/script.js"></script>
 </body>
