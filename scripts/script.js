@@ -1,5 +1,5 @@
 //Элементы редактирования профиля
-let profileEdit = document.querySelector('.profile__edit'),
+const profileEdit = document.querySelector('.profile__edit'),
     profileName = document.querySelector('.profile__info-title'),
     profileJob = document.querySelector('.profile__info-text'),
 
@@ -14,6 +14,8 @@ let profileEdit = document.querySelector('.profile__edit'),
     popUpPlace = document.querySelector('.pop-up_new-card'),
     popUpPlaceForm = document.querySelector('.pop-up__card-form'),
     popUpPlaceClose = document.querySelector('.pop-up__close-card'),
+    cardDataName = document.querySelector('.pop-up__input_card_place'),
+    cardDataLink = document.querySelector('.pop-up__input_card_image'),
 
     //Элементы добавления карточек
     addCardButton = document.querySelector('.profile__add'),
@@ -26,7 +28,6 @@ let profileEdit = document.querySelector('.profile__edit'),
     popUpImageCaption = document.querySelector('.pop-up__caption');
 
 const cardTemplate = document.querySelector('.card-template').content;
-
 
 //Стартовый массив карточек
 const initialCards = [
@@ -57,15 +58,20 @@ const initialCards = [
 ];
 
 //Вызов рендера изначальных карточек
-initialCards.forEach(cardRender);
+initialCards.forEach((item)=> cardRender(cardsContainer, createCard(item)));
+
+// Функция вывода новой карточки
+function cardRender(container, element) {
+    container.prepend(element);
+}
 
 //Функция вывода карточек
-function cardRender(item) {
+function createCard(item) {
     const cardElement = cardTemplate.cloneNode(true);
 
     const cardImage = cardElement.querySelector('.card__image');
     cardImage.src = item.link;
-    cardImage.addEventListener('click', openPopUpImage);
+    cardImage.addEventListener('click', () => openPopUpImage(item));
 
     const cardCaption = cardElement.querySelector('.card__title');
     cardCaption.textContent = item.name;
@@ -76,49 +82,40 @@ function cardRender(item) {
     const deleteCardBtn = cardElement.querySelector('.card__delete');
     deleteCardBtn.addEventListener('click', removeCard);
 
-    cardsContainer.prepend(cardElement);
-
-    //Функия просмотра изображения в карточке
-    function openPopUpImage() {
-        popUpPicture.src = item.link;
-        popUpImageCaption.textContent = item.name;
-        openPopUp(popUpImage, popUpCloseImage);
-    }
-
-    //Функция удаления карточки
-    function removeCard(evt) {
-        evt.target.parentElement.remove();
-
-        deleteCardBtn.removeEventListener('click', removeCard);
-        cardLikeBtn.removeEventListener('click', cardLike);
-        cardImage.removeEventListener('click', openPopUpImage);
-    }
-
-    //Функция переключения лайка в карточке
-    function cardLike(evt){
-        evt.target.classList.toggle('card__like_active');
-    }
-
     return cardElement;
 }
+
+//Функия просмотра изображения в карточке
+function openPopUpImage(item) {
+    popUpPicture.src = item.link;
+    popUpImageCaption.textContent = item.name;
+    openPopUp(popUpImage, popUpCloseImage);
+}
+
+//Функция удаления карточки
+function removeCard(evt) {
+    evt.target.parentElement.remove();
+}
+
+//Функция переключения лайка в карточке
+function cardLike(evt){
+    evt.target.classList.toggle('card__like_active');
+}
+
 
 //Функия добавления новой карточки
 function addNewCard (evt) {
     evt.preventDefault();
-
-    const cardDataName = document.querySelector('.pop-up__input_card_place');
-    const cardDataLink = document.querySelector('.pop-up__input_card_image');
 
     const cardData = {
         name: cardDataName.value,
         link: cardDataLink.value
     };
 
-    cardRender(cardData);
+    cardRender(cardsContainer, createCard(cardData));
     closePopUp(popUpPlace);
 
-    cardDataName.value = '';
-    cardDataLink.value = '';
+    evt.target.reset();
 }
 
 //Функция открытия окна pop-up
