@@ -43,9 +43,13 @@
   <div class="pop-up pop-up_edit-profile">
     <div class="pop-up__window">
       <h2 class="pop-up__title">Редактировать профиль</h2>
-      <form class="pop-up__form" name="edit-profile">
-        <input class="pop-up__input pop-up__input_profile_name" type="text" name="profile-name">
-        <input class="pop-up__input pop-up__input_profile_job" type="text" name="profile-text">
+      <form class="pop-up__form pop-up__edit-profile" name="edit-profile">
+        <input class="pop-up__input pop-up__input_profile_name" type="text" name="profile-name" minlength="2"
+               maxlength="40" required>
+        <span class="pop-up__input-error profile-name-error"></span>
+        <input class="pop-up__input pop-up__input_profile_job" type="text" name="profile-text" minlength="2"
+               maxlength="200" required>
+        <span class="pop-up__input-error profile-text-error"></span>
         <input class="button pop-up__submit" type="submit" value="Сохранить">
       </form>
       <button class="button pop-up__close pop-up__close-profile" type="button"></button>
@@ -55,11 +59,13 @@
   <div class="pop-up pop-up_new-card">
     <div class="pop-up__window">
       <h2 class="pop-up__title">Новое место</h2>
-      <form class="pop-up__card-form" name="edit-profile">
-        <input class="pop-up__input pop-up__input_card_place" type="text" name="profile-name"
-               placeholder="Название" required>
-        <input class="pop-up__input pop-up__input_card_image" type="url" name="profile-text"
+      <form class="pop-up__form pop-up__card-form" name="add-card">
+        <input class="pop-up__input pop-up__input_card_place" type="text" name="card-title"
+               placeholder="Название" minlength="2" maxlength="30" required>
+        <span class="pop-up__input-error card-title-error"></span>
+        <input class="pop-up__input pop-up__input_card_image" type="url" name="card-image"
                placeholder="Ссылка на картинку" required>
+        <span class="pop-up__input-error card-image-error"></span>
         <input class="button pop-up__submit" type="submit" value="Создать">
       </form>
       <button class="button pop-up__close pop-up__close-card" type="button"></button>
@@ -69,7 +75,7 @@
   <div class="pop-up pop-up_card-image">
     <div class="pop-up__image-viewer">
       <img class="pop-up__image" src="#" alt="Фотография">
-      <p class="pop-up__caption">Text</p>
+      <p class="pop-up__caption"></p>
       <button class="button pop-up__close pop-up__close-image" type="button"></button>
     </div>
   </div>
@@ -85,6 +91,7 @@
     </li>
   </template>
   
-<script src="scripts/script.js"></script>
+  <script src="scripts/script.js"></script>
+  <script src="scripts/validate.js"></script>
 </body>
 </html>

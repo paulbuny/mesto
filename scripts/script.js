@@ -4,7 +4,7 @@ const profileEdit = document.querySelector('.profile__edit'),
     profileJob = document.querySelector('.profile__info-text'),
 
     //Pop-up элементы редактирования профиля
-    formElement = document.querySelector('.pop-up__form'),
+    formElement = document.querySelector('.pop-up__edit-profile'),
     popUp = document.querySelector('.pop-up_edit-profile'),
     popUpInputName = formElement.querySelector('.pop-up__input_profile_name'),
     popUpInputJob = formElement.querySelector('.pop-up__input_profile_job'),
@@ -122,11 +122,25 @@ function addNewCard (evt) {
 function openPopUp (popUpElement, popUpCloseBtn) {
     popUpElement.classList.add('pop-up_display_active');
     popUpCloseBtn.addEventListener('click', ()=> closePopUp(popUpElement));
+    popUpElement.addEventListener('mousedown', closePopUpOnOverlayClick);
+    document.addEventListener('keydown', closePopUpOnEscape);
 }
 
 //Функция закрытия окна pop-up
 function closePopUp (popUpElement) {
     popUpElement.classList.remove('pop-up_display_active');
+}
+
+//Функция закрытия окна pop-up по клику на подложку
+function closePopUpOnOverlayClick(evt) {
+    closePopUp(evt.target);
+}
+
+//Функция закрытия окна pop-up по нажатию Esc
+function closePopUpOnEscape(evt) {
+    if (evt.key === 'Escape') {
+        closePopUp(document.querySelector('.pop-up_display_active'));
+    }
 }
 
 //Функция редактирования данных профиля
