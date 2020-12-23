@@ -8,76 +8,70 @@ const validationElements = {
 };
 
 //Функция отображения ошибки
-function showInputError (formElement, inputElement, elementsList, errorMessage) {
-    const errorElement = formElement.querySelector(`.${inputElement.name}-error`);
+function showInputError (form, input, config) {
+    const error = form.querySelector(`.${input.name}-error`);
 
-    inputElement.classList.add(elementsList.inputErrorClass);
-    errorElement.textContent = errorMessage;
-    errorElement.classList.add(elementsList.errorClass);
+    input.classList.add(config.inputErrorClass);
+    error.textContent = input.validationMessage;
+    error.classList.add(config.errorClass);
 }
 
 //Функция исчезновения ошибки
-function hideInputError (formElement, inputElement, elementsList) {
-    const errorElement = formElement.querySelector(`.${inputElement.name}-error`);
+function hideInputError (form, input, config) {
+    const error = form.querySelector(`.${input.name}-error`);
 
-    inputElement.classList.remove(elementsList.inputErrorClass);
-    errorElement.classList.remove(elementsList.errorClass);
-    errorElement.textContent = '';
+    input.classList.remove(config.inputErrorClass);
+    error.classList.remove(config.errorClass);
+    error.textContent = '';
 }
 
 //Функция проверки полей на валидность
-function isValid (formElement, inputElement, elementsList) {
-    if (!inputElement.validity.valid) {
-        showInputError(formElement, inputElement, elementsList, inputElement.validationMessage);
+function checkValidation (form, input, config) {
+    if (!input.validity.valid) {
+        showInputError(form, input, config);
     } else {
-        hideInputError (formElement, inputElement, elementsList);
+        hideInputError (form, input, config);
+    }
+}
+
+//Функция переключения состояния кнопкни в зависимоти от правильности заполнения полей ввода
+function toggleButtonState(button, isValid, config) {
+    if (isValid) {
+        button.classList.remove(config.inactiveButtonClass);
+        button.disabled = false;
+    } else {
+        button.classList.add(config.inactiveButtonClass);
+        button.disabled = true;
     }
 }
 
 //Функция назначания "случашетелей" на поля ввода
-function setEventListeners (formElement, elementsList) {
-    const inputList = Array.from(formElement.querySelectorAll(validationElements.inputSelector));
-    const buttonElement = formElement.querySelector(elementsList.submitButtonSelector);
+function setEventListeners (form, config) {
+    const inputList = form.querySelectorAll(config.inputSelector);
+    const submit = form.querySelector(config.submitButtonSelector);
 
-    toggleButtonState(inputList, buttonElement, elementsList);
-
-    inputList.forEach((inputElement) => {
-        inputElement.addEventListener('input', function() {
-            isValid(formElement, inputElement, elementsList);
-            toggleButtonState(inputList, buttonElement, elementsList);
+    inputList.forEach((input) => {
+        input.addEventListener('input', () => {
+            checkValidation(form, input, config);
+            toggleButtonState(submit, form.checkValidity(), config);
         });
     });
 }
 
 //Функция включения валидации
-function enableValidation (elementsList) {
-    const formList = Array.from(document.querySelectorAll(elementsList.formSelector));
+function enableValidation (config) {
+    const formList = document.querySelectorAll(config.formSelector);
 
-    formList.forEach((formElement) => {
-        formElement.addEventListener('submit', (evt) => {
+    formList.forEach((form) => {
+        form.addEventListener('submit', (evt) => {
             evt.preventDefault();
         });
+        setEventListeners(form, config);
 
-        setEventListeners(formElement, elementsList);
+        const buttonElement = form.querySelector(config.submitButtonSelector);
+
+        toggleButtonState(buttonElement, form.checkValidity(), config);
     });
-}
-
-//Функция проверки. Если хотя бы одно из полей заполнено не верно, кнопка будет неактивна
-function hasInvalidInput(inputList) {
-    return inputList.some((inputElement) => {
-       return !inputElement.validity.valid;
-    });
-}
-
-//Функция переключения состояния кнопкни в зависимоти от правильности заполнения полей ввода
-function toggleButtonState(inputList, buttonElement, elementsList) {
-    if (hasInvalidInput(inputList)) {
-        buttonElement.classList.add(elementsList.inactiveButtonClass);
-        buttonElement.disabled = true;
-    } else {
-        buttonElement.classList.remove(elementsList.inactiveButtonClass);
-        buttonElement.disabled = false;
-    }
 }
 
 enableValidation(validationElements);
