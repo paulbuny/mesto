@@ -1,6 +1,6 @@
 export default class FormValidator {
-    constructor(validationElements) {
-        this._formSelector = validationElements.formSelector;
+    constructor(validationElements, formElement) {
+        this._formElement = formElement;
         this._inputSelector = validationElements.inputSelector;
         this._submitButtonSelector = validationElements.submitButtonSelector;
         this._inactiveButtonClass = validationElements.inactiveButtonClass;
@@ -61,19 +61,16 @@ export default class FormValidator {
 
     //Метод для включения валидации
     enableValidation () {
-        const formList = document.querySelectorAll(this._formSelector);
 
-        formList.forEach((form) => {
-            form.addEventListener('submit', (evt) => {
+            this._formElement.addEventListener('submit', (evt) => {
                 evt.preventDefault();
             });
-            this._setEventListeners(form);
+            this._setEventListeners(this._formElement);
 
-            const buttonElement = form.querySelector(this._submitButtonSelector);
+            const buttonElement = this._formElement.querySelector(this._submitButtonSelector);
 
-            this._toggleButtonState(buttonElement, form.checkValidity());
-        });
-    }
+            this._toggleButtonState(buttonElement, this._formElement.checkValidity());
+        };
 
     resetValidation (form) {
         const inputList = form.querySelectorAll(this._inputSelector);

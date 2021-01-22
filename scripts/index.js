@@ -83,7 +83,9 @@ function closePopUp (popUpElement) {
 
 //Функция закрытия окна pop-up по клику на подложку
 function closePopUpOnOverlayClick(evt) {
-    closePopUp(evt.target);
+    if (evt.target === evt.currentTarget) {
+        closePopUp(evt.target);
+    }
 }
 
 //Функция закрытия окна pop-up по нажатию Esc
@@ -100,7 +102,7 @@ function editProfileData (popUpElement) {
     popUpInputName.value = profileName.textContent;
     popUpInputJob.value = profileJob.textContent;
 
-    formValidation.resetValidation(profileForm);
+    profileValidation.resetValidation(profileForm);
 }
 
 //Функция сохранения отредактированных данных профиля
@@ -137,7 +139,7 @@ function addNewCard (evt) {
     popUpPlaceForm.reset();
 
     //Изменение состояния кнопки по открытию
-    formValidation.resetValidation(popUpPlaceForm);
+    cardValidation.resetValidation(popUpPlaceForm);
 }
 
 export function openPopUpImage (name, link) {
@@ -157,5 +159,8 @@ popUpPlaceForm.addEventListener('submit', addNewCard);
 
 popUpCloseImage.addEventListener('click', () => closePopUp(popUpImage));
 
-const formValidation = new FormValidator(validationConfig);
-formValidation.enableValidation();
+const cardValidation = new FormValidator(validationConfig, popUpPlaceForm);
+cardValidation.enableValidation();
+
+const profileValidation = new FormValidator(validationConfig, profileForm);
+profileValidation.enableValidation();
