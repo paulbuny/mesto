@@ -10,7 +10,7 @@ export default class FormValidator {
 
     //Метод отображения ошибки
     _showInputError (form, input) {
-        const error = form.querySelector(`.${input.name}-error`);
+        const error = form.querySelector(`.${input.id}-error`);
 
         input.classList.add(this._inputErrorClass);
         error.textContent = input.validationMessage;
@@ -19,7 +19,7 @@ export default class FormValidator {
 
     //Метод исчезновения ошибки
     _hideInputError (form, input) {
-            const error = form.querySelector(`.${input.name}-error`);
+            const error = form.querySelector(`.${input.id}-error`);
 
             input.classList.remove(this._inputErrorClass);
             error.classList.remove(this._errorClass);
@@ -48,10 +48,10 @@ export default class FormValidator {
 
     //Метод для назначания "случашетелей" на поля ввода
     _setEventListeners (form) {
-        const inputList = form.querySelectorAll(this._inputSelector);
+        this._inputList = form.querySelectorAll(this._inputSelector);
         const submit = form.querySelector(this._submitButtonSelector);
 
-        inputList.forEach((input) => {
+        this._inputList.forEach((input) => {
             input.addEventListener('input', () => {
                 this._checkValidation(form, input);
                 this._toggleButtonState(submit, form.checkValidity());

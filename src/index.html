@@ -5,20 +5,18 @@
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="pages/index.css">
-  <link rel="icon" href="images/favicon.ico">
   <title>Проект Место</title>
 </head>
 <body class="page">
 
   <header class="header">
-    <img class="header__logo" src="images/header_logo_theme_dark.svg" alt="МЕСТО">
+        <img class="header__logo" src="<%=require('./images/header_logo_theme_dark.svg')%>" alt="МЕСТО">
   </header>
   
   <main class="content">
 
     <section class="profile">
-      <img class="profile__avatar" src="images/Avatar.jpg" alt="Фотография пользователя">
+      <img class="profile__avatar" src="<%=require('./images/Avatar.jpg')%>" alt="Фотография пользователя">
       <div class="profile__wrapper">
         <div class="profile__info">
           <h1 class="profile__info-title">Жак-Ив Кусто</h1>
@@ -44,15 +42,15 @@
     <div class="pop-up__window">
       <h2 class="pop-up__title">Редактировать профиль</h2>
       <form class="pop-up__form pop-up__edit-profile" name="edit-profile" novalidate>
-        <input class="pop-up__input pop-up__input_profile_name" type="text" name="profile-name" minlength="2"
+        <input class="pop-up__input pop-up__input_profile_name" type="text" name="name" id="profile-name" minlength="2"
                maxlength="40" required>
         <span class="pop-up__input-error profile-name-error"></span>
-        <input class="pop-up__input pop-up__input_profile_job" type="text" name="profile-text" minlength="2"
+        <input class="pop-up__input pop-up__input_profile_job" type="text" name="job" id="profile-text" minlength="2"
                maxlength="200" required>
         <span class="pop-up__input-error profile-text-error"></span>
         <input class="button pop-up__submit" type="submit" value="Сохранить">
       </form>
-      <button class="button pop-up__close pop-up__close-profile" type="button"></button>
+      <button class="button pop-up__close" type="button"></button>
     </div>
   </div>
 
@@ -60,15 +58,15 @@
     <div class="pop-up__window">
       <h2 class="pop-up__title">Новое место</h2>
       <form class="pop-up__form pop-up__card-form" name="add-card" novalidate>
-        <input class="pop-up__input pop-up__input_card_place" type="text" name="card-title"
+        <input class="pop-up__input pop-up__input_card_place" type="text" name="name" id="card-title"
                placeholder="Название" minlength="2" maxlength="30" required>
         <span class="pop-up__input-error card-title-error"></span>
-        <input class="pop-up__input pop-up__input_card_image" type="url" name="card-image"
+        <input class="pop-up__input pop-up__input_card_image" type="url" name="link" id="card-image"
                placeholder="Ссылка на картинку" required>
         <span class="pop-up__input-error card-image-error"></span>
         <input class="button pop-up__submit" type="submit" value="Создать">
       </form>
-      <button class="button pop-up__close pop-up__close-card" type="button"></button>
+      <button class="button pop-up__close" type="button"></button>
     </div>
   </div>
 
@@ -76,7 +74,7 @@
     <div class="pop-up__image-viewer">
       <img class="pop-up__image" src="#" alt="Фотография">
       <p class="pop-up__caption"></p>
-      <button class="button pop-up__close pop-up__close-image" type="button"></button>
+      <button class="button pop-up__close" type="button"></button>
     </div>
   </div>
   
@@ -90,6 +88,5 @@
       </div>
     </li>
   </template>
-  <script  type="module" src="scripts/index.js"></script>
 </body>
 </html>

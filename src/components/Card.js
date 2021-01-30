@@ -1,10 +1,11 @@
-import {openPopUpImage} from "./index.js";
+import PopupWithImage from "./PopupWithImage.js";
 
 export default class Card {
-    constructor(card, cardSelector) {
-        this._name = card.name;
-        this._link = card.link;
+    constructor(item, cardSelector, { handleCardCreate }) {
+        this._name = item.name;
+        this._link = item.link;
         this._cardSelector = cardSelector;
+        this._handleCardCreate = handleCardCreate;
     }
 
     //Метод для получения шаблона карточки
@@ -49,6 +50,6 @@ export default class Card {
             .addEventListener('click', () => this._removeCard());
         this._element
             .querySelector('.card__image')
-            .addEventListener('click', () => openPopUpImage(this._name, this._link));
+            .addEventListener('click', () => this._handleCardCreate(this));
     }
 }
