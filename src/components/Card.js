@@ -23,6 +23,7 @@ export default class Card {
         this._element = this._getTemplate()
         this._cardImage = this._element.querySelector('.card__image');
         this._cardLikeElement = this._element.querySelector('.card__like');
+        this._cardDeleteBtn = this._element.querySelector('.card__delete');
 
         this._setEventListeners();
 
@@ -46,14 +47,11 @@ export default class Card {
 
     //Метод по назначению слушателей для элементов карточки
     _setEventListeners() {
-        this._element
-            .querySelector('.card__like')
+        this._cardLikeElement
             .addEventListener('click', () => this._cardLike());
-        this._element
-            .querySelector('.card__delete')
+        this._cardDeleteBtn
             .addEventListener('click', () => this._removeCard());
-        this._element
-            .querySelector('.card__image')
+        this._cardImage
             .addEventListener('click', () => this._handleCardCreate(this));
     }
 }
