@@ -67,7 +67,7 @@ function openPopupProfile() {
 
     popupSaveProfile.open();
 
-    profilePopupValidation.resetValidation(profileForm);
+    profilePopupValidation.resetValidation();
 }
 
 //Вызов открытия попапа формы заполнения информации о профиле
@@ -119,7 +119,7 @@ popupAddNewCard.setEventListeners();
 //Функия для вызова поп-апа с формой добавления новой карточки
 function openCardPopup(){
     popupAddNewCard.open();
-    cardPopupValidation.resetValidation(popupCardForm);
+    cardPopupValidation.resetValidation();
 }
 
 //Вызов открытия попапа формы добавления новой карточки
