@@ -109,7 +109,9 @@ initialCardsRenderer.renderItems();
 const popupAddNewCard = new PopupWithForm({
     popupSelector: popupCardSelector,
     handleFormSubmit: (item) => {
+
         const card = createCard(item);
+
         initialCardsRenderer.addItem(card);
     }
 });
