@@ -6,6 +6,8 @@ export default class FormValidator {
         this._inactiveButtonClass = validationElements.inactiveButtonClass;
         this._inputErrorClass = validationElements.inputErrorClass;
         this._errorClass = validationElements.errorClass;
+        this._inputList = this._formElement.querySelectorAll(this._inputSelector);
+        this._submitButtonElement = this._formElement.querySelector(this._submitButtonSelector);
 }
 
     //Метод отображения ошибки
@@ -48,13 +50,10 @@ export default class FormValidator {
 
     //Метод для назначания "случашетелей" на поля ввода
     _setEventListeners (form) {
-        this._inputList = form.querySelectorAll(this._inputSelector);
-        const submit = form.querySelector(this._submitButtonSelector);
-
         this._inputList.forEach((input) => {
             input.addEventListener('input', () => {
                 this._checkValidation(form, input);
-                this._toggleButtonState(submit, form.checkValidity());
+                this._toggleButtonState(this._submitButtonElement, form.checkValidity());
             });
         });
     }
@@ -67,20 +66,14 @@ export default class FormValidator {
             });
             this._setEventListeners(this._formElement);
 
-            const buttonElement = this._formElement.querySelector(this._submitButtonSelector);
-
-            this._toggleButtonState(buttonElement, this._formElement.checkValidity());
+            this._toggleButtonState(this._submitButtonElement, this._formElement.checkValidity());
         };
 
-    resetValidation (form) {
-        const inputList = form.querySelectorAll(this._inputSelector);
-
-        inputList.forEach((input) => {
-            this._hideInputError(form, input)
+    resetValidation () {
+        this._inputList.forEach((input) => {
+            this._hideInputError(this._formElement, input)
         });
 
-        const button = form.querySelector(this._submitButtonSelector);
-
-        this._toggleButtonState(button, form.checkValidity());
+        this._toggleButtonState(this._submitButtonElement, this._formElement.checkValidity());
     }
 }

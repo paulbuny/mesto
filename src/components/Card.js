@@ -20,11 +20,15 @@ export default class Card {
 
     //Метод для создания жлемента карточки
     createCard () {
-        this._element = this._getTemplate();
+        this._element = this._getTemplate()
+        this._cardImage = this._element.querySelector('.card__image');
+        this._cardLikeElement = this._element.querySelector('.card__like');
+
         this._setEventListeners();
-        const cardImage = this._element.querySelector('.card__image');
-        cardImage.src = this._link;
-        cardImage.alt = this._name;
+
+        this._cardImage.src = this._link;
+        this._cardImage.alt = this._name;
+
         this._element.querySelector('.card__title').textContent = this._name;
 
         return this._element;
@@ -32,7 +36,7 @@ export default class Card {
 
     //Метод для переключения лайка в карточке
     _cardLike () {
-        this._element.querySelector('.card__like').classList.toggle('card__like_active');
+        this._cardLikeElement.classList.toggle('card__like_active');
     }
 
     //Метод для удаления карточки

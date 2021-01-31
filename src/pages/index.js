@@ -11,6 +11,7 @@ import {
     popupInputJob,
     popupCardForm,
     popupCardSelector,
+    popupCardImage,
     cardTemplateSelector,
     addCardButton,
     cardsContainer,
@@ -37,7 +38,7 @@ import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
 
 
-/*НИЖЕ - код касающийся данных о профиле*/
+/*НИЖЕ - код относящийся к данным профиля*/
 
 //Создание нового класса валидации для формы заполнения профиля
 const profilePopupValidation = new FormValidator(validationConfig, profileForm);
@@ -72,26 +73,33 @@ function openPopupProfile() {
 //Вызов открытия попапа формы заполнения информации о профиле
 editProfileButton.addEventListener('click', () => openPopupProfile());
 
-/*НИЖЕ - код касающийся карточек*/
+/*НИЖЕ - код относящийся к карточкам*/
 
 //Создание нового класса валидации для формы добавления новой карточки
 const cardPopupValidation = new FormValidator(validationConfig, popupCardForm);
 cardPopupValidation.enableValidation();
 
+//Создание нового экземпляра класса поп-апа с картинкой
+const popupImage = new PopupWithImage(popupCardImage);
+
+function createCard(item) {
+    const cardElement = new Card(item, cardTemplateSelector, {
+        handleCardCreate: () => {
+            popupImage.open(item);
+        }
+    });
+
+    const card = cardElement.createCard();
+
+    return card;
+}
+
 //Рендер начальных карточек
 const initialCardsRenderer = new Section({
     items: initialCards,
     render: (item) =>{
-
-        //Создание нового экземпляра класа для каждой отдельной карточки
-        const cardsArray = new Card(item, cardTemplateSelector, {
-            handleCardCreate: (item) => {
-                const popupImage = new PopupWithImage('.pop-up_card-image');
-
-                popupImage.open({ name: item._name, link: item._link});
-        }});
-        cardsArray.createCard();
-        initialCardsRenderer.addItem(cardsArray._element);
+        const card = createCard(item);
+        initialCardsRenderer.addItem(card);
     }}, cardsContainer);
 
 initialCardsRenderer.renderItems();
@@ -101,20 +109,9 @@ initialCardsRenderer.renderItems();
 const popupAddNewCard = new PopupWithForm({
     popupSelector: popupCardSelector,
     handleFormSubmit: (item) => {
-
-        //Создание нового экземпляра класса для новой карточки
-        const cardElement = new Card(item, cardTemplateSelector, {
-            handleCardCreate: (item) => {
-
-                //Создание нового экземпляра класса для поп-апа с изображением
-                const popupImage = new PopupWithImage('.pop-up_card-image');
-                popupImage.open({ name: item._name, link: item._link});
-            }
-        });
-
-        cardElement.createCard();
-        initialCardsRenderer.addItem(cardElement._element);
-    },
+        const card = createCard(item);
+        initialCardsRenderer.addItem(card);
+    }
 });
 
 popupAddNewCard.setEventListeners();

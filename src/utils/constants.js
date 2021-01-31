@@ -11,6 +11,7 @@ const popupInputJob = profileForm.querySelector('.pop-up__input_profile_job');
     //Pop-up элементы добавления новой карточки "места"
 const popupCardForm = document.querySelector('.pop-up__card-form');
 const popupCardSelector = '.pop-up_new-card';
+const popupCardImage = '.pop-up_card-image';
 const cardTemplateSelector = '.card-template';
 
     //Элементы добавления карточек
@@ -64,6 +65,7 @@ export {
     popupInputJob,
     popupCardForm,
     popupCardSelector,
+    popupCardImage,
     cardTemplateSelector,
     addCardButton,
     cardsContainer,
