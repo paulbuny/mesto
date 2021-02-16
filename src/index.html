@@ -10,13 +10,16 @@
 <body class="page">
 
   <header class="header">
-        <img class="header__logo" src="<%=require('./images/header_logo_theme_dark.svg')%>" alt="МЕСТО">
+    <img class="header__logo" src="<%=require('./images/header_logo_theme_dark.svg')%>" alt="МЕСТО">
   </header>
   
   <main class="content">
 
     <section class="profile">
-      <img class="profile__avatar" src="<%=require('./images/Avatar.jpg')%>" alt="Фотография пользователя">
+      <div class="profile__avatar-wrapper">
+        <button class="button profile__edit-image"></button>
+          <img class="profile__avatar" src="<%=require('./images/Avatar.jpg')%>" alt="Фотография пользователя">
+      </div>
       <div class="profile__wrapper">
         <div class="profile__info">
           <h1 class="profile__info-title">Жак-Ив Кусто</h1>
@@ -45,9 +48,32 @@
         <input class="pop-up__input pop-up__input_profile_name" type="text" name="name" id="profile-name" minlength="2"
                maxlength="40" required>
         <span class="pop-up__input-error profile-name-error"></span>
-        <input class="pop-up__input pop-up__input_profile_job" type="text" name="job" id="profile-text" minlength="2"
+        <input class="pop-up__input pop-up__input_profile_job" type="text" name="about" id="profile-text" minlength="2"
                maxlength="200" required>
         <span class="pop-up__input-error profile-text-error"></span>
+        <input class="button pop-up__submit" type="submit" value="Сохранить">
+      </form>
+      <button class="button pop-up__close" type="button"></button>
+    </div>
+  </div>
+
+  <div class="pop-up pop-up_confirm">
+    <div class="pop-up__window">
+      <h2 class="pop-up__title">Вы уверены?</h2>
+      <form class="pop-up__form pop-up__confirm" name="confirm-delete" novalidate>
+        <input class="button pop-up__submit" type="submit" value="Да">
+      </form>
+      <button class="button pop-up__close" type="button"></button>
+    </div>
+  </div>
+
+  <div class="pop-up pop-up_update-avatar">
+    <div class="pop-up__window">
+      <h2 class="pop-up__title">Обновить аватар</h2>
+      <form class="pop-up__form pop-up__update-avatar" name="edit-avatar" novalidate>
+        <input class="pop-up__input pop-up__input_profile_avatar" type="url" name="avatar" id="profile-avatar"
+               minlength="2" required>
+        <span class="pop-up__input-error profile-avatar-error"></span>
         <input class="button pop-up__submit" type="submit" value="Сохранить">
       </form>
       <button class="button pop-up__close" type="button"></button>
@@ -84,9 +110,13 @@
       <img class="card__image" src="#" alt="Фотокарточка">
       <div class="card__text">
         <h2 class="card__title"></h2>
-        <button class="button card__like" type="button"></button>
+        <div class="card__like-wrapper">
+          <button class="button card__like" type="button"></button>
+          <span class="card__like-counter"></span>
+        </div>
       </div>
     </li>
   </template>
+
 </body>
 </html>

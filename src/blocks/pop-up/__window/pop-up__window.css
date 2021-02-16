@@ -13,5 +13,6 @@
   .pop-up__window {
     padding: 34px 36px 37px;
     max-width: 430px;
+    min-width: 430px;
   }
 }
