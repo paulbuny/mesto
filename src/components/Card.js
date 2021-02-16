@@ -39,9 +39,13 @@ export default class Card {
 
     //Метод для обновления количества отбраженных лайков
     refreshLikes (likes) {
-        likes.length === 0 ?
-            this._cardLikeCounterElement.textContent = '' :
+        if (likes.length === 0) {
+            this._cardLikeCounterElement.textContent = ''
+        } else {
             this._cardLikeCounterElement.textContent = likes.length;
+        }
+        this.toggleLike();
+        this._cardLike();
     }
 
     //Метод получения id текущей карточки
@@ -80,7 +84,7 @@ export default class Card {
     }
 
     //Метод для удаления карточки
-    _removeCard () {
+    removeCard () {
         this._element.remove();
         this._element = null;
     }

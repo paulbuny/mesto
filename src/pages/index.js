@@ -72,8 +72,27 @@ Promise.all([
 const cardPopupValidation = new FormValidator(validationConfig, popupCardForm);
 cardPopupValidation.enableValidation();
 
+let cardToDelete = {};
+
     //Создание нового экземпляра класса поп-апа с картинкой
 const popupImage = new PopupWithImage(popupCardImage);
+
+    //Создание нового экземпляра поп-апа подтверждения удаления карточки
+const popUpConfirmOnDelete = new PopupWithForm({
+    popupSelector: popupConfirmDeleteSelector,
+
+    handleFormSubmit: () => {
+        popUpConfirmOnDelete.renderLoading(true);
+
+        api.deleteCard(cardToDelete.getCardId())
+            .then(() => {
+                cardToDelete.removeCard();
+            })
+            .catch(console.error)
+            .finally(() => popUpConfirmOnDelete.renderLoading(false))
+    }
+})
+popUpConfirmOnDelete.setEventListeners();
 
     //Фукнкция создания карточки
 function createCard (item, currentUserId) {
@@ -84,21 +103,7 @@ function createCard (item, currentUserId) {
         },
 
         handleCardDelete: () => {
-            const popUpConfirmOnDelete = new PopupWithForm({
-                popupSelector: popupConfirmDeleteSelector,
-
-                handleFormSubmit: () => {
-                    popUpConfirmOnDelete.renderLoading(true);
-
-                    api.deleteCard(cardElement.getCardId())
-                        .then(() => {
-                            cardElement._removeCard();
-                        })
-                        .catch(console.error)
-                        .finally(() => popUpConfirmOnDelete.renderLoading(true))
-                }
-            })
-            popUpConfirmOnDelete.setEventListeners();
+            cardToDelete = cardElement;
             popUpConfirmOnDelete.open();
         },
 
@@ -107,17 +112,13 @@ function createCard (item, currentUserId) {
 
                 api.addLike(cardElement.getCardId())
                     .then((res) => {
-                        cardElement._cardLike();
                         cardElement.refreshLikes(res.likes);
-                        cardElement.toggleLike();
                     })
             } else {
 
                 api.removeLike(cardElement.getCardId())
                     .then((res) => {
-                        cardElement._cardLike();
                         cardElement.refreshLikes(res.likes);
-                        cardElement.toggleLike();
                     })
             }
         }
